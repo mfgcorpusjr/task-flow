@@ -13,13 +13,21 @@ export default function App() {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
 
+  const handleToggleTask = (id: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 space-y-8">
       <Title />
 
       <CreateTaskForm onCreateTask={handleCreateTask} />
 
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onToggleTask={handleToggleTask} />
     </div>
   );
 }

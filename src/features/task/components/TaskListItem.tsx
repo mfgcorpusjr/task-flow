@@ -8,13 +8,20 @@ import { type Task } from "@/features/task/types";
 
 type TaskListItemProps = {
   task: Task;
+  onToggleTask: (id: number) => void;
 };
 
-export default function TaskListItem({ task }: TaskListItemProps) {
+export default function TaskListItem({
+  task,
+  onToggleTask,
+}: TaskListItemProps) {
   return (
     <div className="flex items-center gap-4">
       <div className="flex-1 flex items-center gap-4">
-        <Checkbox />
+        <Checkbox
+          checked={task.isCompleted}
+          onCheckedChange={() => onToggleTask(task.id)}
+        />
 
         <span className="break-all">{task.text}</span>
 
