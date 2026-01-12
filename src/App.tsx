@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Title from "@/components/Title";
 import CreateTaskForm from "@/features/task/components/CreateTaskForm";
 import TaskList from "@/features/task/components/TaskList";
+import EmptyTask from "@/features/task/components/EmptyTask";
 
 import { type Task } from "@/features/task/types";
 import {
@@ -62,15 +63,19 @@ export default function App() {
 
       <CreateTaskForm onCreateTask={handleCreateTask} />
 
-      <TaskList
-        tasks={filteredTasks}
-        isIncompleteOnly={isIncompleteOnly}
-        onToggleIsIncompleteOnly={handleToggleIsIncompleteOnly}
-        onSortByPriority={handleSortByPriority}
-        onUpdateTask={handleUpdateTask}
-        onToggleTask={handleToggleTask}
-        onDeleteTask={handleDeleteTask}
-      />
+      {filteredTasks.length > 0 ? (
+        <TaskList
+          tasks={filteredTasks}
+          isIncompleteOnly={isIncompleteOnly}
+          onToggleIsIncompleteOnly={handleToggleIsIncompleteOnly}
+          onSortByPriority={handleSortByPriority}
+          onUpdateTask={handleUpdateTask}
+          onToggleTask={handleToggleTask}
+          onDeleteTask={handleDeleteTask}
+        />
+      ) : (
+        <EmptyTask />
+      )}
     </div>
   );
 }
