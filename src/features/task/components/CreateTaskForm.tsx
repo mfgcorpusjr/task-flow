@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -33,26 +34,33 @@ export default function CreateTaskForm({ onCreateTask }: CreateTaskFormProps) {
 
   return (
     <form
-      className="flex flex-col md:flex-row md:items-center gap-4"
+      className="flex flex-col md:flex-row md:items-end gap-4"
       onSubmit={handleSubmit}
     >
-      <Input
-        type="text"
-        placeholder="Enter new task"
-        name="text"
-        value={form.text}
-        onChange={handleInputChange}
-      />
+      <div className="flex-1 space-y-2">
+        <Label htmlFor="text">Text</Label>
+        <Input
+          type="text"
+          placeholder="Enter new task"
+          id="text"
+          name="text"
+          value={form.text}
+          onChange={handleInputChange}
+        />
+      </div>
 
-      <Input
-        type="number"
-        placeholder="Enter new task"
-        min={1}
-        className="w-full md:w-50"
-        name="priority"
-        value={form.priority}
-        onChange={handleInputChange}
-      />
+      <div className="w-full md:w-50 space-y-2">
+        <Label htmlFor="priority">Priority</Label>
+        <Input
+          type="number"
+          placeholder="Enter new task"
+          min={1}
+          id="priority"
+          name="priority"
+          value={form.priority}
+          onChange={handleInputChange}
+        />
+      </div>
 
       <Button disabled={isDisabled}>Create Task</Button>
     </form>

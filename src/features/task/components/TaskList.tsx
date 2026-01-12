@@ -33,7 +33,7 @@ export default function TaskList({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <TaskControls
         isIncompleteOnly={isIncompleteOnly}
         onToggleIsIncompleteOnly={onToggleIsIncompleteOnly}
