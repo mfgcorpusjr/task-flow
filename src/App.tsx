@@ -13,6 +13,14 @@ export default function App() {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
 
+  const handleUpdateTask = (id: number, text: string, priority: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, text, priority } : task
+      )
+    );
+  };
+
   const handleToggleTask = (id: number) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -33,6 +41,7 @@ export default function App() {
 
       <TaskList
         tasks={tasks}
+        onUpdateTask={handleUpdateTask}
         onToggleTask={handleToggleTask}
         onDeleteTask={handleDeleteTask}
       />
