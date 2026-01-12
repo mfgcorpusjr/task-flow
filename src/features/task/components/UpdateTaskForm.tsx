@@ -23,8 +23,8 @@ export default function UpdateTaskForm({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setForm((prevTask) => ({
-      ...prevTask,
+    setForm((prevForm) => ({
+      ...prevForm,
       [name]: name === "priority" ? +value : value,
     }));
   };

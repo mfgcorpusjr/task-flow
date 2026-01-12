@@ -10,13 +10,13 @@ type CreateTaskFormProps = {
 };
 
 export default function CreateTaskForm({ onCreateTask }: CreateTaskFormProps) {
-  const [task, setTask] = useState({ text: "", priority: 1 });
+  const [form, setForm] = useState({ text: "", priority: 1 });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setTask((prevTask) => ({
-      ...prevTask,
+    setForm((prevForm) => ({
+      ...prevForm,
       [name]: name === "priority" ? +value : value,
     }));
   };
@@ -24,12 +24,12 @@ export default function CreateTaskForm({ onCreateTask }: CreateTaskFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    onCreateTask({ ...task, id: Date.now(), isCompleted: false });
+    onCreateTask({ ...form, id: Date.now(), isCompleted: false });
 
-    setTask({ text: "", priority: 1 });
+    setForm({ text: "", priority: 1 });
   };
 
-  const isDisabled = task.text.trim().length === 0 || task.priority < 1;
+  const isDisabled = form.text.trim().length === 0 || form.priority < 1;
 
   return (
     <form
@@ -40,7 +40,7 @@ export default function CreateTaskForm({ onCreateTask }: CreateTaskFormProps) {
         type="text"
         placeholder="Enter new task"
         name="text"
-        value={task.text}
+        value={form.text}
         onChange={handleInputChange}
       />
 
@@ -50,7 +50,7 @@ export default function CreateTaskForm({ onCreateTask }: CreateTaskFormProps) {
         min={1}
         className="w-full md:w-50"
         name="priority"
-        value={task.priority}
+        value={form.priority}
         onChange={handleInputChange}
       />
 

@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Title from "@/components/Title";
 import CreateTaskForm from "@/features/task/components/CreateTaskForm";
 import TaskList from "@/features/task/components/TaskList";
 
 import { type Task } from "@/features/task/types";
+import {
+  getTasks as getStoredTasks,
+  setTasks as setStoredTasks,
+} from "./utils/localStorage";
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(getStoredTasks());
   const [isIncompleteOnly, setIsIncompleteOnly] = useState(false);
+
+  useEffect(() => {
+    setStoredTasks(tasks);
+  }, [tasks]);
 
   const handleCreateTask = (task: Task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
