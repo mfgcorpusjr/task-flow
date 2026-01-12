@@ -39,7 +39,7 @@ export default function UpdateTaskForm({
 
   return (
     <form
-      className="flex flex-col md:flex-row md:items-center gap-4"
+      className="flex flex-col md:flex-row md:items-center gap-4 py-2"
       onSubmit={handleSubmit}
     >
       <Input

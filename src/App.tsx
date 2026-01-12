@@ -8,9 +8,14 @@ import { type Task } from "@/features/task/types";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [isIncompleteOnly, setIsIncompleteOnly] = useState(false);
 
   const handleCreateTask = (task: Task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
+  };
+
+  const handleToggleIsIncompleteOnly = () => {
+    setIsIncompleteOnly((prevIsIncompleteOnly) => !prevIsIncompleteOnly);
   };
 
   const handleUpdateTask = (id: number, text: string, priority: number) => {
@@ -33,14 +38,20 @@ export default function App() {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
+  const filteredTasks = isIncompleteOnly
+    ? tasks.filter((task) => !task.isCompleted)
+    : tasks;
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 space-y-8">
+    <div className="max-w-6xl mx-auto px-4 py-12 space-y-16">
       <Title />
 
       <CreateTaskForm onCreateTask={handleCreateTask} />
 
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
+        isIncompleteOnly={isIncompleteOnly}
+        onToggleIsIncompleteOnly={handleToggleIsIncompleteOnly}
         onUpdateTask={handleUpdateTask}
         onToggleTask={handleToggleTask}
         onDeleteTask={handleDeleteTask}

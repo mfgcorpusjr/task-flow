@@ -20,7 +20,7 @@ export default function TaskListItem({
   onDeleteTask,
 }: TaskListItemProps) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 py-2">
       <div className="flex-1 flex items-center gap-4">
         <Checkbox
           checked={task.isCompleted}
