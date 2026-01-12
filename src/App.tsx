@@ -18,6 +18,12 @@ export default function App() {
     setIsIncompleteOnly((prevIsIncompleteOnly) => !prevIsIncompleteOnly);
   };
 
+  const handleSortByPriority = () => {
+    setTasks((prevTasks) =>
+      [...prevTasks].sort((a, b) => a.priority - b.priority)
+    );
+  };
+
   const handleUpdateTask = (id: number, text: string, priority: number) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -52,6 +58,7 @@ export default function App() {
         tasks={filteredTasks}
         isIncompleteOnly={isIncompleteOnly}
         onToggleIsIncompleteOnly={handleToggleIsIncompleteOnly}
+        onSortByPriority={handleSortByPriority}
         onUpdateTask={handleUpdateTask}
         onToggleTask={handleToggleTask}
         onDeleteTask={handleDeleteTask}
