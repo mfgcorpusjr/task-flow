@@ -9,11 +9,13 @@ import { type Task } from "@/features/task/types";
 type TaskListItemProps = {
   task: Task;
   onToggleTask: (id: number) => void;
+  onDeleteTask: (id: number) => void;
 };
 
 export default function TaskListItem({
   task,
   onToggleTask,
+  onDeleteTask,
 }: TaskListItemProps) {
   return (
     <div className="flex items-center gap-4">
@@ -33,7 +35,11 @@ export default function TaskListItem({
           <LucidePencil />
         </Button>
 
-        <Button variant="destructive" size="icon">
+        <Button
+          variant="destructive"
+          size="icon"
+          onClick={() => onDeleteTask(task.id)}
+        >
           <LucideTrash />
         </Button>
       </div>

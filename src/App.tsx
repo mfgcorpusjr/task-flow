@@ -21,13 +21,21 @@ export default function App() {
     );
   };
 
+  const handleDeleteTask = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 space-y-8">
       <Title />
 
       <CreateTaskForm onCreateTask={handleCreateTask} />
 
-      <TaskList tasks={tasks} onToggleTask={handleToggleTask} />
+      <TaskList
+        tasks={tasks}
+        onToggleTask={handleToggleTask}
+        onDeleteTask={handleDeleteTask}
+      />
     </div>
   );
 }
