@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Title from "@/components/Title";
 import CreateTaskForm from "@/features/task/components/CreateTaskForm";
+import TaskList from "@/features/task/components/TaskList";
 
 import { type Task } from "@/features/task/types";
 
@@ -17,6 +18,8 @@ export default function App() {
       <Title />
 
       <CreateTaskForm onCreateTask={handleCreateTask} />
+
+      <TaskList tasks={tasks} />
     </div>
   );
 }
