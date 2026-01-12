@@ -60,7 +60,7 @@ export default function UpdateTaskForm({
         onChange={handleInputChange}
       />
 
-      <Button size="icon" disabled={isDisabled}>
+      <Button className="w-full md:w-22" size="icon" disabled={isDisabled}>
         <LucideCheck />
       </Button>
     </form>

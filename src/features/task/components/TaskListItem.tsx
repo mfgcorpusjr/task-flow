@@ -33,7 +33,7 @@ export default function TaskListItem({
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="secondary" size="icon" onClick={onSelectTask}>
+        <Button variant="outline" size="icon" onClick={onSelectTask}>
           <LucidePencil />
         </Button>
 
