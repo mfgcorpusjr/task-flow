@@ -6,13 +6,13 @@ import { Label } from "@/components/ui/label";
 type TaskControlsProps = {
   isIncompleteOnly: boolean;
   onToggleIsIncompleteOnly: () => void;
-  onSortByPriority: () => void;
+  onSortTask: () => void;
 };
 
 export default function TaskControls({
   isIncompleteOnly,
   onToggleIsIncompleteOnly,
-  onSortByPriority,
+  onSortTask,
 }: TaskControlsProps) {
   return (
     <div className="flex justify-end gap-4">
@@ -27,7 +27,7 @@ export default function TaskControls({
 
       <LucideArrowDownWideNarrow
         className="cursor-pointer"
-        onClick={onSortByPriority}
+        onClick={onSortTask}
       />
     </div>
   );

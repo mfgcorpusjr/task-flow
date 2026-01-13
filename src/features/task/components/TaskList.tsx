@@ -10,7 +10,7 @@ type TaskListProps = {
   tasks: Task[];
   isIncompleteOnly: boolean;
   onToggleIsIncompleteOnly: () => void;
-  onSortByPriority: () => void;
+  onSortTask: () => void;
   onUpdateTask: (id: number, text: string, priority: number) => void;
   onToggleTask: (id: number) => void;
   onDeleteTask: (id: number) => void;
@@ -20,7 +20,7 @@ export default function TaskList({
   tasks,
   isIncompleteOnly,
   onToggleIsIncompleteOnly,
-  onSortByPriority,
+  onSortTask,
   onUpdateTask,
   onToggleTask,
   onDeleteTask,
@@ -37,7 +37,7 @@ export default function TaskList({
       <TaskControls
         isIncompleteOnly={isIncompleteOnly}
         onToggleIsIncompleteOnly={onToggleIsIncompleteOnly}
-        onSortByPriority={onSortByPriority}
+        onSortTask={onSortTask}
       />
 
       <div className="divide-y">
